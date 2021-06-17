@@ -37,17 +37,50 @@ namespace Prime_number
             {
                 Console.WriteLine("Input the number to be checked");
                 int o = Convert.ToInt32(Console.ReadLine());
-                for (int x = 2; x <= o; x++)
+                /* for (int x = 2; x <= o; x++)
+                 {
+                     if (x % o == 0)
+                     {
+                         Console.WriteLine(" It's not a prime number");
+                         break;
+                     }
+                     else
+                     {
+                         Console.WriteLine("It is a prime number");
+
+                     }
+                 }
+                 */
+
+                //snippet after bug fix
+
+                //optional but for a perfect code, we should cover all the bases(inputs) to avoid exceptions/garbage value/no results
+                if (o < 2)
                 {
-                    if (x % o == 0)
+                    Console.WriteLine("Please Enter a Number greater than 1");
+                    return; //return is being used to terminate the code to skip rest of the code
+                }
+                //end of escape clause
+
+
+                //seperating 2 from loop as counter is started from 2.
+                if (o == 2)
+                {
+                    Console.WriteLine(" It's a prime number");
+                    return; //return is being used to terminate the code to skip rest of the code
+                }
+
+                //for loop initilised with 2
+                for (int x = 2; x < o; x++)
+                {
+                    if (o % x == 0) // swapped o and x, o shoud be divided by the counter to get reminder
                     {
-                        Console.WriteLine(" It's not a prime number");
+                        Console.WriteLine("It's not a prime number");
                         break;
                     }
-                    else
+                    if (x+1 == o) // we can use flag here but "if" can also be used to compare and commit if counter has reached the end and have not divided the number
                     {
                         Console.WriteLine("It is a prime number");
-
                     }
                 }
             }
